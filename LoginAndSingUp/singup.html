@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0e4c91e37e.js" crossorigin="anonymous"></script>
+    <title>Sing Up</title>
+
+    <style>
+#container{
+    height: 520px;
+    width: 35%;
+    /* border:1px solid red; */
+    margin: auto;
+     margin-top: 100px; 
+     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+border-radius: 15px;
+    }
+
+#logo{
+position: relative;
+bottom: 90px;
+left: 150px;
+} 
+
+h3{
+    position: relative;
+    bottom: 55px;
+    left: 40%;
+    font-family: ui-sans-serif, system-ui, -apple-system;
+    font-size: 20px;
+}
+
+.input{
+   
+    position: relative;
+    left: 235px;
+    bottom: 40px;
+    font-size: 15px;
+    
+}
+input{
+    padding: 10px 150px 10px 1px;
+    position: relative;
+    right: 200px;
+    bottom: 40px;
+    font-size: 15px;  
+    /* outline: none;
+    border:none;
+    border-bottom:1px solid red;
+    background: transparent; */
+}
+p{
+    position: relative;
+    bottom: 32px;
+    right:200px;
+    font-family: ui-sans-serif, system-ui, -apple-system;
+}
+::placeholder{
+font-size: 13px;
+position: relative;
+right:0px ;
+}
+
+#tams{
+height: 40px;
+width: 85%;
+
+position: relative;
+bottom: 60px;
+margin: auto;
+}
+#tams>p{
+    color: gray;
+    position: relative;
+    left: 2px;
+    bottom:10px;
+}
+#sing{
+height: 40px;
+width:auto;
+
+position: relative;
+bottom: 45px;
+}
+#singup:hover{
+    cursor: pointer;
+}
+
+#singup{
+    position: relative;
+    left: 23px;
+    top:0px;
+    padding: 13px 153px 13px 153px;
+    background-color: 
+#e8eaed;
+border: 0px;
+border-radius: 7px;
+font-family: ui-sans-serif, system-ui, -apple-system;
+font-weight: 600;
+color: grey;
+}
+
+
+#alreadyAccount{
+    height: 20px;
+    width: 70%;
+   
+    margin: auto;
+   position: relative;
+   bottom: 5px;
+}
+
+#alreadyAccount>p{
+color:grey;
+position: relative;
+left: 46px;
+bottom:10px;
+}
+
+.at{
+    color:
+#2667ec;
+}
+#last{
+position: relative;
+top: 4px;
+left: 10px;
+color:gray;
+}
+
+.eye{
+   
+    display: block;
+    position:absolute;
+    bottom:50px;
+    left:90px;
+}
+
+#hide1{
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <form id="form">
+
+        <div id="container">
+
+            <div id="logo">
+                <img src="https://sso.masaischool.com/brand_dark.svg" alt="">
+            </div>
+      
+      <h3>Sign Up</h3>
+      
+
+      <div class="input" > 
+    <level>
+        <p>Full Name</p> 
+      <input type="text" id="name"     placeholder="Enter your full name">
+    </level>
+</div>
+
+    <div class="input" > 
+    <level>
+        <p>Email</p>
+        <input type="text" id="email" placeholder="Enter email">
+      </level>
+    </div>
+
+      <div class="input" > 
+      <level>
+          <p>Password</p>
+        <input type="text" id="pass" placeholder="Enter password">
+       
+       <span class="eye" Onclick="myFunction()" >
+        <i id="hide1"    class="fa fa-eye"></i>
+        <i id="hide2"   class="fa fa-eye-slash"></i>
+       </span> 
+      </level>
+    </div>
+    <div id="tams">
+        <p id="condition">By using up,accept the masai school <span>  <a href="https://masaischool.com/terms/" class="at">
+             Terms of service</a></span> and acknowed the <span> <a href="https://masaischool.com/privacy/" class="at">Privacy policy</a></span>  </p>
+    </div>
+    <div id="sing">
+ <input id="singup" type="submit" value="SING UP">
+    </div>
+    <div id="alreadyAccount">
+        <p>Already have an account? <span><a href="login.html" class="at"> Sing In</a></span>     </p>
+    </div>
+<p id="last">© 2022 by Masai School
+    Privacy Policy & Terms and Conditions</p>
+</div>
+    </form>
+</body>
+<script>
+function myFunction(){
+    var x=document.getElementById("pass")
+    var y=document.getElementById("hide1")
+    var z=document.getElementById("hide2")
+
+    if(x.type==='password'){
+        x.type="text"
+        y.style.display="block";
+        z.style.display="none";
+    }else{
+        x.type="password"
+        y.style.display="none";
+        z.style.display="block";
+    }
+}
+
+
+
+document.querySelector('#form').addEventListener("submit",singupFun)
+
+var userData=JSON.parse(localStorage.getItem("userCred"))||[];
+function singupFun(){
+event.preventDefault();
+window.location.reolad;
+var useObj={
+ name:document.querySelector("#name").value,
+ userName:document.querySelector("#email").value,
+ password:document.querySelector("#pass").value
+};
+userData.push(useObj);
+localStorage.setItem("userCred",JSON.stringify(userData))
+
+alert("SingUp Success")
+}
+
+
+</script>
+</html>

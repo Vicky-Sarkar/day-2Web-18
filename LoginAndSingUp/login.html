@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0e4c91e37e.js" crossorigin="anonymous"></script>
+    <title>LOG IN</title>
+
+    <style>
+#container{
+    height: 520px;
+    width: 35%;
+    margin: auto;
+     margin-top: 100px; 
+     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+border-radius: 15px;
+    }
+
+#logo{
+position: relative;
+bottom: 90px;
+left: 150px;
+} 
+
+h3{
+    position: relative;
+    bottom: 10px;
+    left: 40%;
+    font-family: ui-sans-serif, system-ui, -apple-system;
+    font-size: 20px;
+}
+
+.input{
+   
+    position: relative;
+    left: 615px;
+    bottom: 400px;
+    font-size: 15px;
+    
+}
+input{
+    padding: 10px 150px 10px 1px;
+    position: relative;
+    right: 200px;
+    bottom: 40px;
+    font-size: 15px;  
+    /* outline: none;
+    border:none;
+    border-bottom:1px solid red;
+    background: transparent; */
+}
+p{
+    position: relative;
+    bottom: 32px;
+    right:200px;
+    font-family: ui-sans-serif, system-ui, -apple-system;
+}
+::placeholder{
+font-size: 13px;
+position: relative;
+right:0px ;
+}
+
+#log{
+height: 40px;
+width:35%;
+/* border:1px solid red; */
+
+position: relative;
+bottom: 400px;
+left:380px;
+}
+#login:hover{
+    cursor: pointer;
+}
+
+#login{
+    position: relative;
+    left: 23px;
+    top:0px;
+    padding: 13px 153px 13px 153px;
+    background-color:#2563eb;
+border: 0px;
+border-radius: 7px;
+font-family: ui-sans-serif, system-ui, -apple-system;
+font-weight: 600;
+color: 
+white;
+}
+
+
+#alreadyAccount{
+    height: 20px;
+    width: 70%;
+   
+    margin: auto;
+   position: relative;
+   bottom: 320px;
+   left:250px;
+}
+
+#alreadyAccount>p{
+color:grey;
+position: relative;
+left: 46px;
+bottom:10px;
+}
+
+.at{
+    color:
+#2667ec;
+}
+#last{
+position: relative;
+top: 4px;
+left: 10px;
+color:gray;
+}
+
+.eye{
+    display: block;
+    position:absolute;
+    bottom:50px;
+    left:90px;
+}
+
+#hide1{
+    display: none;
+}
+
+#loginWithGoogle{
+    height: 40px;
+    width:31%;
+    /* border:1px solid red; */
+   position: relative;
+   
+    bottom: 350px;
+    left:400px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+#Google{
+    position: relative;
+    left: 80px;
+    top:9px;
+}
+
+#para{
+    position: relative;
+    left:120px;
+}
+    </style>
+</head>
+<body>
+    <form id="formTag">
+
+        <div id="container">
+
+            <div id="logo">
+                <img src="https://sso.masaischool.com/brand_dark.svg" alt="">
+            </div>
+      
+      <h3>Sign In</h3>
+      
+
+   
+</div>
+
+    <div class="input" > 
+    <level>
+        <p>Email</p>
+        <input type="text" id="email" placeholder="Enter email">
+      </level>
+    </div>
+
+      <div class="input" > 
+      <level>
+          <p>Password</p>
+        <input type="text" id="pass" placeholder="Enter password">
+       
+       <span class="eye" Onclick="myFunction()" >
+        <i id="hide1"    class="fa fa-eye"></i>
+        <i id="hide2"   class="fa fa-eye-slash"></i>
+       </span> 
+      </level>
+    </div>
+    
+    <div id="log">
+ <input id="login" type="submit" value="SING IN">
+    </div>
+
+
+
+ 
+    <div id="loginWithGoogle">
+       <img  id="Google" src="https://sso.masaischool.com/google.svg" alt=""> <p id="para">CONTINUE WITH GOOGLE</p>
+           </div>
+
+
+    <div id="alreadyAccount">
+        <p>Dont have an account? <span><a href="Singup.html" class="at"> Sing Up</a></span>     </p>
+    </div>
+
+</div>
+    </form>
+</body>
+<script>
+function myFunction(){
+    var x=document.getElementById("pass")
+    var y=document.getElementById("hide1")
+    var z=document.getElementById("hide2")
+
+    if(x.type==='password'){
+        x.type="text"
+        y.style.display="block";
+        z.style.display="none";
+    }else{
+        x.type="password"
+        y.style.display="none";
+        z.style.display="block";
+    }
+}
+
+//
+
+document.querySelector("#formTag").addEventListener("submit",loginFun)
+
+var regdUser =JSON.parse(localStorage.getItem("userCred"));
+
+
+
+ function loginFun() {
+    
+    event.preventDefault();
+    var enterEmail = document.querySelector("#email").value;
+   var enterPass = document.querySelector("#pass").value;
+ 
+    var flag = false;
+     for (var i = 0; i < regdUser.length; i++) {
+        if (regdUser[i].userName == enterEmail && regdUser[i].password == enterPass) {
+
+           
+           flag = true;
+        }
+
+     }
+          if (flag == true) {
+         alert("Login Sucess");
+         window.location.href = "https://masaischool.com/courses/full-stack-web-dev-full-time/";
+     }
+      else {    
+             alert("Login Failed")
+    }
+}
+</script>
+</html>
